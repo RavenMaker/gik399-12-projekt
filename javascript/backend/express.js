@@ -87,3 +87,5 @@ server.get('/resurs/:id', (req, res) => {
       message: 'Den gick inte att söka på den valda filmen'});
   }
 }); 
+
+//test
