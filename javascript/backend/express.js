@@ -8,8 +8,19 @@ server.listen(PORT, () => {
 
 
 server.get('/resurs', (req, res) => {
-    //callbackfunktion för att hantera förfrågan
-  res.send('Hello, World!');
+  try {
+    /* const något = något; Läsa data från request(req) denna utvecklas
+    olika beroende på hur frontend ser ut. Om det är id=req.params.id
+    eller title=req.body.title ???? */
+
+    // res.send('something')
+
+  } catch (error){
+    console.error(error);
+    res.status(500).json({
+      message: 'Något gick fel'});
+  }
+
 }); 
 
 server.put('/resurs', (req, res) => {
