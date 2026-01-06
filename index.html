@@ -9,54 +9,79 @@
 >
     <link rel="stylesheet" href="style.css">
     <link js="script" src="javascript/frontend/index.js"></script>
-       
-    <title>Projekt 12</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 <body>
-    <h1>Projekt 12 CRUD webbsida.</h1>
-    
-   <!--<p>hej Julia </p> -->
-   <!--<p>hej Julia </p> -->
-    <containter id="main-container">
+  
+    <containter class="text-black-700" id="main-container">
         
-        <header>
-            <h2>Min CRUD applikation</h2>
-            <!--Navigation-->
-             <nav id="main-nav">
-                <ul>
-                    <li><a href="#home">Hem</a></li>
-                    <li><a href="#about">Om</a></li>
-                    <li><a href="#contact">Kontakt</a></li>
-                </ul>
-            </nav>
-           
-              
-        </header>
-        
-            <div id="container-div">
-                <!-- Formulär -->
-                 <h2>Lägg till ny användare</h2>
-                 <p>instruktioner här</p>
-                <form id="data-form">
-                <input type="text" id="name" name="name" placeholder="Namn" required>
-                <input type="email" id="email" name="email" placeholder="Email" required>
-                <button type="submit">Lägg till</button>
-                
-            </form>
-            </div>
+        <header class="bg-gray-500 shadow " id="main-header">
+            <!--logo-->
+            <h1 class="text-2xl font bold text-blue-900">Movie vault</h1>
+            <h2 class="text-lg font italic text-blue-700">Din personliga filmdatabas</h2>
 
-            <div id="container-div"> 
-                <div id="data-display">               
-                <!-- Data generar dynamiskt genom div -->
-                <h2>Visa data här </h2>
-                 <p>instruktioner här</p>
-                 <button id="load-data-btn">Ladda data</button>
-                  <button id="load-data-btn">ta bort data</button>
-                  <button type="submit">Lägg till</button>  
+            <!--meny-->
+            <nav class="max-w-6xl mx-auto flex justify-between items-center text-2xl font-bold text-white-900 gap-6"id="main-nav">
+                <ul class="flex gap-6">
+                    <li><a href="#home" class="text-blue-600 hover:text-blue-800">Hem</a></li>
+                    <li><a href="#about" class="text-blue-600 hover:text-blue-800">Om</a></li>
+                    <li><a href="#contact" class="text-blue-600 hover:text-blue-800">Kontakt</a></li>
+                </ul>
+
+              </header>
+        <!--Hero section-->
+        <body class="flex-col ">
+        <section class=" text-center p-8" id="hero-section">
+            <h2 class="text-3xl font-bold text-blue-900">Välkommen till Movie Vault</h2>
+            <p class="text-lg text-blue-700">Din personliga filmdatabas för att lagra och hantera dina favoritfilmer.</p>
+        </section>
+              
+         <!-- Formulär -->
+           <section class=" p-8 " id="main-section">
+            <h2 class="text text-3xl font-bold text-blue-900">Lägg till/uppdater resurs</h2>
+            <form class="bg-white shadow rounded-xl p-6  ">
+                <div class="flex flex-col mb-6 gap-4">
+                    <label class=" block font-medium mb-1 border-b-2 pb-2"> 
+                        <input type="text" 
+                                id="movie-title" 
+                                name="movie-title" 
+                                placeholder="Film" 
+                                required
+                                class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </label>
+                    
                 </div>
-            </div>
-         
-     
+                <div class="flex flex-col mb-12 gap-4">
+                    <label class=" block font-medium mb-1 border-b-2 pb-2"> 
+                        <input type="text" 
+                                id="movie-title" 
+                                name="movie-title" 
+                                placeholder="Film" 
+                                required
+                                class="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </label>
+                    
+                </div>
+            </form>
+
+           </section>
+        <!--list-->
+        
+           <section class="bg-purple-100 p-8" id="main-section">
+            <h2>Lista över resurser</h2>
+                <div id="list" class="bg-white grid gap-4">
+                    <div class="p-4 shadow rounden bg-grey flex justify-content">
+                        visa databaslistan här. 
+                    </div>
+                </div>
+                <button class="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Ladda fler</button>
+
+           </section>
+       
+            
+        
+            
 
         <footer id="footer">
                 <p><i>Kurs: GIK339</i></p>
