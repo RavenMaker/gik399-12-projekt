@@ -18,28 +18,69 @@ server.get('/resurs', (req, res) => {
   } catch (error){
     console.error(error);
     res.status(500).json({
-      message: 'Något gick fel'});
+      message: 'Det gick inte att hämta'});
   }
 
 }); 
 
 server.put('/resurs', (req, res) => {
-    //callbackfunktion för att hantera förfrågan
-  res.send('Update endpoint hit!');
+    try {
+    /* const något = något; Läsa data från request(req) denna utvecklas
+    olika beroende på hur frontend ser ut. Om det är id=req.params.id
+    eller title=req.body.title ???? */
+
+    // res.send('something')
+
+  } catch (error){
+    console.error(error);
+    res.status(500).json({
+      message: 'Det gick inte att uppdatera'});
+  }
+
 });
 
 server.post('/resurs', (req, res) => {
-    //callbackfunktion för att hantera förfrågan
-  res.send('Create endpoint hit!');
+  try {
+    /* const något = något; Läsa data från request(req) denna utvecklas
+    olika beroende på hur frontend ser ut. Om det är id=req.params.id
+    eller title=req.body.title ???? */
+
+    // res.send('something')
+
+  } catch (error){
+    console.error(error);
+    res.status(500).json({
+      message: 'Det gick inte att skapa'});
+  }
 });
 
 server.delete('/resurs/:id', (req, res) => {
-    //callbackfunktion för att hantera förfrågan
-  res.send('Delete endpoint hit!');
+  try {
+    /* const något = något; Läsa data från request(req) denna utvecklas
+    olika beroende på hur frontend ser ut. Om det är id=req.params.id
+    eller title=req.body.title ???? */
+
+    // res.send('something')
+
+  } catch (error){
+    console.error(error);
+    res.status(500).json({
+      message: 'Det gick inte att radera'});
+  }
 }); 
 
 //Sök
 server.get('/resurs/:id', (req, res) => {
-    //callbackfunktion för att hantera förfrågan
-  res.send('Search endpoint hit!');
+  try {
+    /* const något = något; Läsa data från request(req) denna utvecklas
+    olika beroende på hur frontend ser ut. Om det är id=req.params.id
+    eller title=req.body.title ???? */
+
+    // res.send('something')
+
+  } catch (error){
+    console.error(error);
+    res.status(500).json({
+      message: 'Den gick inte att söka på den valda filmen'});
+  }
 }); 
