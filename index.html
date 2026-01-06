@@ -3,16 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/style.css">
+    <link
+  href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+>
+    <link rel="stylesheet" href="style.css">
     <link js="script" src="javascript/frontend/index.js"></script>
+       
     <title>Projekt 12</title>
 </head>
 <body>
+    <h1>Projekt 12 CRUD webbsida.</h1>
+    
+    <script src="Labb_1.js" defer></script> 
+    <containter id="main-container">
+        
+        <header>
+            <h2>Min CRUD applikation</h2>
+            <!--Navigation-->
+             <nav id="main-nav">
+                <ul>
+                    <li><a href="#home">Hem</a></li>
+                    <li><a href="#about">Om</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+           
+              
+        </header>
+        <body>
+            <div id="container-div">
+                <!-- Formulär -->
+                 <h2>Lägg till ny användare</h2>
+                 <p>instruktioner här</p>
+                <form id="data-form">
+                <input type="text" id="name" name="name" placeholder="Namn" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <button type="submit">Lägg till</button>
+                
+            </form>
+            </div>
+
+            <div id="container-div"> 
+                <div id="data-display">               
+                <!-- Data generar dynamiskt genom div -->
+                <h2>Visa data här </h2>
+                 <p>instruktioner här</p>
+                 <button id="load-data-btn">Ladda data</button>
+                  <button id="load-data-btn">ta bort data</button>
+                  <button type="submit">Lägg till</button>  
+                </div>
+            </div>
+         
+        </body>
+
+        <footer id="footer">
+                <p><i>Kurs: GIK339</i></p>
+        </footer>
+        
+    </containter>
     
     <!-- Här visualiserar vi elementen och ser till att det ser bra ut på hemsidan-->
-    <!--  Lista -->
-    <!-- Formulär -->
     <!-- Navigation -->
-    <!-- knappar -->
+   
+
+   
+
+   
+    
+    
+
 </body>
 </html>
