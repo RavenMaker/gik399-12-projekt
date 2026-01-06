@@ -2,12 +2,15 @@ const PORT = process.env.PORT || 3000;
 const express = require('express');
 const server = express();
 
+// const sqlite = require('sqlit3'); Kan lägga till .verbose() för mer feedback
+// const db = new sqlite.Database('./????.db');
+
 server.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
 
 
-server.get('/resurs', (req, res) => {
+server.get('/resurs', (req, res) => { /* Ska ändra ordet resurs till något annat */
   try {
     /* const något = något; Läsa data från request(req) denna utvecklas
     olika beroende på hur frontend ser ut. Om det är id=req.params.id
