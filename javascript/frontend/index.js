@@ -46,10 +46,33 @@ document.addEventListener("DOMContentLoaded", () => {                    //Vänt
 
 
     form.addEventListener("submit", (e) => {                             //När användaren klickar på submit i formuläret körs denna funktion
-    e.preventDefault();                                                  //förhindrar att sidan laddas om eftersom projektet kräver att detta stoppas
+        e.preventDefault();                                              //förhindrar att sidan laddas om eftersom projektet kräver att detta stoppas
 
-    //Här ska POST via fetch ske när backend är klar
-    console.log("submit klickad - backend ej kopplad ännu");             //bekräftar att submit lyssnaren fungerar och att JS är korrekt kopplat till HMTL
+        // Hämtar värden som användare skrivit i de olika fälten
+        //console logs kan tas bort när POST/PUT mot backend är implementerat (använt tidigare för felsökning)
+        const titleValue = document.querySelector("#title").value;
+        console.log("Titel:", titleValue);
+
+        const yearValue = document.querySelector("#year").value;         
+        console.log("År:", yearValue);
+
+        const categoryValue = document.querySelector("#category").value; 
+        console.log("Kategori:", categoryValue);
+
+        //Samlar formulärets data i ett objekt
+        const movie = {
+            title: titleValue,
+            year: yearValue,
+            category: categoryValue
+        };
+        // ATT FIXA!!!
+        //OBS!!!! det skapade data objektet ovan kommer senare skickas till backend som JSON
+        // via JSON.stringify(movie) i ett fetch-anrop (POST/PUT)
+
+        //loggar objektet för att bekräfta strukturen
+        console.log("Movie-objekt:", movie);
+  
+        console.log("submit klickad - backend ej kopplad ännu");         //bekräftar att submit lyssnaren fungerar och att JS är korrekt kopplat till HMTL
     });
 
     console.log("frontend JS laddad och redo");                          //Körs när sidan laddas för att bekräfta att JS filen är korrekt länkad - kan tas bort om man vill
