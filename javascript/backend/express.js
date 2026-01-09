@@ -2,7 +2,9 @@ const PORT = process.env.PORT || 3000;
 const express = require('express');
 const server = express();
 
-// const sqlite = require('sqlit3'); Kan lägga till .verbose() för mer feedback
+//server.use(express.json());
+
+// const sqlite = require('sqlite3'); Kan lägga till .verbose() för mer feedback
 // const db = new sqlite.Database('./????.db');
 
 server.listen(PORT, () => {
@@ -10,11 +12,10 @@ server.listen(PORT, () => {
 });
 
 
-server.get('/resurs', (req, res) => { /* Ska ändra ordet resurs till något annat */
+server.get('/resurs', (req, res) => { /* Ska ändra ordet resurs till något annat, typ MOVIE? */
   try {
-    /* const något = något; Läsa data från request(req) denna utvecklas
-    olika beroende på hur frontend ser ut. Om det är id=req.params.id
-    eller title=req.body.title ???? */
+    // SELECT *
+    const title = req.body.title /* OSÄKER */ 
 
     // res.send('something')
 
@@ -26,13 +27,10 @@ server.get('/resurs', (req, res) => { /* Ska ändra ordet resurs till något ann
 
 }); 
 
-server.put('/resurs', (req, res) => {
+/* server.put('/resurs/:id', (req, res) => {
     try {
-    /* const något = något; Läsa data från request(req) denna utvecklas
-    olika beroende på hur frontend ser ut. Om det är id=req.params.id
-    eller title=req.body.title ???? */
-
-    // res.send('something')
+      const {id, title, year, category } = req.body.id;
+      res.send('Uppdatera film ${id}') */
 
   } catch (error){
     console.error(error);
@@ -44,26 +42,22 @@ server.put('/resurs', (req, res) => {
 
 server.post('/resurs', (req, res) => {
   try {
-    /* const något = något; Läsa data från request(req) denna utvecklas
-    olika beroende på hur frontend ser ut. Om det är id=req.params.id
-    eller title=req.body.title ???? */
+    /* const title=req.body.title */
 
     // res.send('something')
 
   } catch (error){
     console.error(error);
     res.status(500).json({
-      message: 'Det gick inte att skapa'});
+      message: 'Det gick inte att skapa ny film'});
   }
 });
 
 server.delete('/resurs/:id', (req, res) => {
   try {
-    /* const något = något; Läsa data från request(req) denna utvecklas
-    olika beroende på hur frontend ser ut. Om det är id=req.params.id
-    eller title=req.body.title ???? */
+    const id=req.params.id
 
-    // res.send('something')
+    res.send('Filmen med id ${id} har raderats')
 
   } catch (error){
     console.error(error);
@@ -75,11 +69,8 @@ server.delete('/resurs/:id', (req, res) => {
 //Sök
 server.get('/resurs/:id', (req, res) => {
   try {
-    /* const något = något; Läsa data från request(req) denna utvecklas
-    olika beroende på hur frontend ser ut. Om det är id=req.params.id
-    eller title=req.body.title ???? */
-
-    // res.send('something')
+    const id=req.params.id
+    res.send('Söker efter film med id ${id}');
 
   } catch (error){
     console.error(error);
@@ -87,5 +78,3 @@ server.get('/resurs/:id', (req, res) => {
       message: 'Den gick inte att söka på den valda filmen'});
   }
 }); 
-
-//test
