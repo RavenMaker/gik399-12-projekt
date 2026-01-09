@@ -72,7 +72,7 @@
             </section>
 
 
-        <section class="bg-purple-100 p-8" id="main-section">
+        <section class="bg-purple-100 p-8" id="movieList">
             <h2 class="text-3xl font-bold text-center">Lista över resurser</h2>
                 <div id="list" class="bg-white grid gap-4">
                     <div class="p-4 shadow rounden bg-grey flex justify-content">
@@ -89,3 +89,34 @@
     </body>
 
 </html>
+
+
+<script>
+      //knapp för att lägga till film
+const addbtn = document.querySelector("#button");
+
+addbtn.textContent = "Lägg till films";
+addbtn.className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600";
+
+addbtn.addEventListener("click", () =>{
+    const movtitel =document.querySelector("#titel").value; //hämtar värdet från input fältet med id titel
+   
+    if (!titel.trim()){
+        alert ("Vänligen ange en titel");
+        return;
+    }
+    //lägger till film i listan 
+    console.log("Listan tillagd:", titel);
+    // Skickar data till backend via fetch POST (skapa ny film) .inväntar från backend
+    fetch("http://localhost:3000/resurs", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ title: movtitel })
+    });
+
+    console.log("Lägger till film");
+    const titel= document.querySelector("#titel").value;
+    document.querySelector("#titel").value=""; //tömmer input fältet efter submit
+</script>
