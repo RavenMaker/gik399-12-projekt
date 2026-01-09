@@ -4,7 +4,7 @@ const server = express();
 
 //server.use(express.json());
 
-// const sqlite = require('sqlite3'); Kan lägga till .verbose() för mer feedback
+const sqlite = require('sqlite3').verbose();
 // const db = new sqlite.Database('./????.db');
 
 server.listen(PORT, () => {
@@ -30,7 +30,7 @@ server.get('/resurs', (req, res) => { /* Ska ändra ordet resurs till något ann
 /* server.put('/resurs/:id', (req, res) => {
     try {
       const {id, title, year, category } = req.body.id;
-      res.send('Uppdatera film ${id}') */
+      res.send(`Uppdatera film ${id}`) */
 
   } catch (error){
     console.error(error);
