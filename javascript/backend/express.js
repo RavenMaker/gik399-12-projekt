@@ -2,7 +2,7 @@ const PORT = process.env.PORT || 3000;
 const express = require('express');
 const server = express();
 
-//server.use(express.json());
+server.use(express.json());
 
 const sqlite = require('sqlite3').verbose();
 // const db = new sqlite.Database('./????.db');
@@ -12,12 +12,10 @@ server.listen(PORT, () => {
 });
 
 
-server.get('/resurs', (req, res) => { /* Ska ändra ordet resurs till något annat, typ MOVIE? */
+server.get('/movies', (req, res) => { /* Ska ändra ordet resurs till något annat, typ MOVIE? */
   try {
-    // SELECT *
-    const title = req.body.title /* OSÄKER */ 
-
-    // res.send('something')
+    const result = await db.query("SELECT * FROM movies");
+    res.send('something')
 
   } catch (error){
     console.error(error);
@@ -27,10 +25,10 @@ server.get('/resurs', (req, res) => { /* Ska ändra ordet resurs till något ann
 
 }); 
 
-/* server.put('/resurs/:id', (req, res) => {
+server.put('/movies/:id', (req, res) => {
     try {
-      const {id, title, year, category } = req.body.id;
-      res.send(`Uppdatera film ${id}`) */
+      /*const {id, title, year, category } = req.body.id;
+      res.send(`Uppdatera film ${id}`)*/
 
   } catch (error){
     console.error(error);
@@ -40,7 +38,7 @@ server.get('/resurs', (req, res) => { /* Ska ändra ordet resurs till något ann
 
 });
 
-server.post('/resurs', (req, res) => {
+server.post('/movies', (req, res) => {
   try {
     /* const title=req.body.title */
 
@@ -53,7 +51,7 @@ server.post('/resurs', (req, res) => {
   }
 });
 
-server.delete('/resurs/:id', (req, res) => {
+server.delete('/movies/:id', (req, res) => {
   try {
     const id=req.params.id
 
@@ -67,7 +65,7 @@ server.delete('/resurs/:id', (req, res) => {
 }); 
 
 //Sök
-server.get('/resurs/:id', (req, res) => {
+server.get('/movies/:id', (req, res) => {
   try {
     const id=req.params.id
     res.send('Söker efter film med id ${id}');
