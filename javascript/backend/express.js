@@ -2,7 +2,9 @@ const PORT = process.env.PORT || 3000;
 const express = require('express');
 const server = express();
 
-// const sqlite = require('sqlit3'); Kan lägga till .verbose() för mer feedback
+//server.use(express.json());
+
+// const sqlite = require('sqlite3'); Kan lägga till .verbose() för mer feedback
 // const db = new sqlite.Database('./????.db');
 
 server.listen(PORT, () => {
@@ -10,9 +12,10 @@ server.listen(PORT, () => {
 });
 
 
-server.get('/resurs', (req, res) => { /* Ska ändra ordet resurs till något annat */
+server.get('/resurs', (req, res) => { /* Ska ändra ordet resurs till något annat, typ MOVIE? */
   try {
-    const title = req.body.title /* OSÄKER */
+    // SELECT *
+    const title = req.body.title /* OSÄKER */ 
 
     // res.send('something')
 
@@ -24,10 +27,10 @@ server.get('/resurs', (req, res) => { /* Ska ändra ordet resurs till något ann
 
 }); 
 
-server.put('/resurs/:id', (req, res) => {
+/* server.put('/resurs/:id', (req, res) => {
     try {
-      const {title, year, category } = req.body.id;
-      res.send('Uppdatera film ${id}')
+      const {id, title, year, category } = req.body.id;
+      res.send('Uppdatera film ${id}') */
 
   } catch (error){
     console.error(error);
@@ -46,7 +49,7 @@ server.post('/resurs', (req, res) => {
   } catch (error){
     console.error(error);
     res.status(500).json({
-      message: 'Det gick inte att skapa'});
+      message: 'Det gick inte att skapa ny film'});
   }
 });
 
@@ -54,7 +57,7 @@ server.delete('/resurs/:id', (req, res) => {
   try {
     const id=req.params.id
 
-    // res.send('something')
+    res.send('Filmen med id ${id} har raderats')
 
   } catch (error){
     console.error(error);
@@ -67,8 +70,7 @@ server.delete('/resurs/:id', (req, res) => {
 server.get('/resurs/:id', (req, res) => {
   try {
     const id=req.params.id
-
-    // res.send('something')
+    res.send('Söker efter film med id ${id}');
 
   } catch (error){
     console.error(error);
