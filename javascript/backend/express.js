@@ -12,9 +12,7 @@ server.listen(PORT, () => {
 
 server.get('/resurs', (req, res) => { /* Ska ändra ordet resurs till något annat */
   try {
-    /* const något = något; Läsa data från request(req) denna utvecklas
-    olika beroende på hur frontend ser ut. Om det är id=req.params.id
-    eller title=req.body.title ???? */
+    const title = req.body.title /* OSÄKER */
 
     // res.send('something')
 
@@ -26,13 +24,10 @@ server.get('/resurs', (req, res) => { /* Ska ändra ordet resurs till något ann
 
 }); 
 
-server.put('/resurs', (req, res) => {
+server.put('/resurs/:id', (req, res) => {
     try {
-    /* const något = något; Läsa data från request(req) denna utvecklas
-    olika beroende på hur frontend ser ut. Om det är id=req.params.id
-    eller title=req.body.title ???? */
-
-    // res.send('something')
+      const {title, year, category } = req.body.id;
+      res.send('Uppdatera film ${id}')
 
   } catch (error){
     console.error(error);
@@ -44,9 +39,7 @@ server.put('/resurs', (req, res) => {
 
 server.post('/resurs', (req, res) => {
   try {
-    /* const något = något; Läsa data från request(req) denna utvecklas
-    olika beroende på hur frontend ser ut. Om det är id=req.params.id
-    eller title=req.body.title ???? */
+    /* const title=req.body.title */
 
     // res.send('something')
 
@@ -59,9 +52,7 @@ server.post('/resurs', (req, res) => {
 
 server.delete('/resurs/:id', (req, res) => {
   try {
-    /* const något = något; Läsa data från request(req) denna utvecklas
-    olika beroende på hur frontend ser ut. Om det är id=req.params.id
-    eller title=req.body.title ???? */
+    const id=req.params.id
 
     // res.send('something')
 
@@ -75,9 +66,7 @@ server.delete('/resurs/:id', (req, res) => {
 //Sök
 server.get('/resurs/:id', (req, res) => {
   try {
-    /* const något = något; Läsa data från request(req) denna utvecklas
-    olika beroende på hur frontend ser ut. Om det är id=req.params.id
-    eller title=req.body.title ???? */
+    const id=req.params.id
 
     // res.send('something')
 
@@ -87,5 +76,3 @@ server.get('/resurs/:id', (req, res) => {
       message: 'Den gick inte att söka på den valda filmen'});
   }
 }); 
-
-//test
