@@ -2,20 +2,21 @@ const PORT = process.env.PORT || 3000;
 const express = require('express');
 const server = express();
 
-server.use(express.json());
-
 const sqlite = require('sqlite3').verbose();
-// const db = new sqlite.Database('./????.db');
+const db = new sqlite3.Database('./movies.db');
+
+server.use(express.json()); 
+server.use(express.static('?????')) // mappens namn där index.html, CSS och JS för frontend
 
 server.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });
 
-
-server.get('/movies', (req, res) => { /* Ska ändra ordet resurs till något annat, typ MOVIE? */
+// Alla endpoints ska ha någon from av db.run(), db.all() eller db.get()
+server.get('/movies', (req, res) => {
   try {
-    const result = await db.query("SELECT * FROM movies");
-    res.send('something')
+    const result = db.all("SELECT * FROM movies");
+    res.send('something') // res.json(result.row)
 
   } catch (error){
     console.error(error);
@@ -27,8 +28,8 @@ server.get('/movies', (req, res) => { /* Ska ändra ordet resurs till något ann
 
 server.put('/movies/:id', (req, res) => {
     try {
-      /*const {id, title, year, category } = req.body.id;
-      res.send(`Uppdatera film ${id}`)*/
+      const {id, title, year, category } = req.body;
+      res.send(`Uppdatera film ${id}`)
 
   } catch (error){
     console.error(error);
@@ -40,7 +41,8 @@ server.put('/movies/:id', (req, res) => {
 
 server.post('/movies', (req, res) => {
   try {
-    /* const title=req.body.title */
+    console.log(req.body);
+    const {id, title, year, category } = req.body;
 
     // res.send('something')
 
@@ -55,7 +57,7 @@ server.delete('/movies/:id', (req, res) => {
   try {
     const id=req.params.id
 
-    res.send('Filmen med id ${id} har raderats')
+    res.send(`Filmen med id ${id} har raderats`)
 
   } catch (error){
     console.error(error);
@@ -67,7 +69,7 @@ server.delete('/movies/:id', (req, res) => {
 //Sök
 server.get('/movies/:id', (req, res) => {
   try {
-    const id=req.params.id
+    const result = db.all("SELECT * FROM movies");
     res.send('Söker efter film med id ${id}');
 
   } catch (error){
