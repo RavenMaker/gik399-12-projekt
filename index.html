@@ -15,7 +15,7 @@
 <body>
   <main>
     <header>
-      <h1>Filmbibliotek</h1>
+    
     </header>
     <!--nav-->
      <header id="main-header">
@@ -66,22 +66,23 @@
             <section class="text-center" id="main-section">
                 <h2 class="text-2xl font-bold ">Add/Update Resource</h2>
             
-                <form class="bg-white shadow rounded-xl p-6 flex flex-row gap-6 " id="movieForm">
-                <div class="flex  gap-8 justify-center">
-                    <div class="flex flex-col gap-4">
-                      <div class="flex flex-col mb-2 gap-2">
-                        <label class="font-medium text-start" for="movie-title ">Titel</label>
-                        <input class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" id="title" name="Title" required>
+                <form class="bg-white shadow rounded-xl p-6 flex flex-row gap-6 items-center mx-auto" id="movieForm">
+                <div class="flex gap-8 justify-center mx-center">
+                    <div class="flex flex-row gap-4 items-end mx-center">
+
+                      <div class="flex flex-row mb-2 gap-2 h-6 ">
+                        <label class="font-medium text-right h-6" for="movie-title ">Titel</label>
+                        <input class=" h-12 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" id="title" name="Title" required>
                       </div>   
-                      <div class="flex flex-col mb-2 gap-2">
+                      <div class="flex flex-row mb-2 gap-2 h-6">
                         <label class="font-medium text-start" for="movie-title ">Year </label>
-                        <input class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" id="year" name="Year" required>
+                        <input class="h-12 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" id="year" name="Year" required>
                       </div> 
-                      <div class="flex flex-col mb-2 gap-2">
+                      <div class="flex flex-row mb-2 gap-2 h-6">
                         <label class="font-medium text-start" for="movie-title ">Category</label>
-                        <input class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" id="category" name="Category" required>
+                        <input class="h-12 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" id="category" name="Category" required>
                       </div> 
-                      <button id="button" type="submit"></button>
+                      <button id="button h-12" type="submit"></button>
                       
                     </div>
 <!--
@@ -106,15 +107,14 @@
                </form>
             </section>
 
-     <section class="bg-purple-100 p-8" id="movieList">
+     <section class="bg-purple-100 p-8 space-between" id="movieList">
             <h2 class="text-3xl font-bold text-center">Lista över resurser</h2>
                 <div id="list" class="bg-white grid gap-4">
-                    <div class="p-4 shadow rounden bg-grey flex justify-content">
+                    <div class="p-4 shadow rounden bg-grey flex justify-end">
                         visa databaslistan här. 
                     </div>
                 </div>
               <button>Uppdatera</button>
-
            </section>
 
     <footer id="footer">
