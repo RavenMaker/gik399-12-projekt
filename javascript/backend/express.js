@@ -15,7 +15,7 @@ server.listen(PORT, () => {
 // Alla endpoints ska ha någon from av db.run(), db.all() eller db.get()
 server.get('/movies', (req, res) => {
   try {
-    const result = db.all("SELECT * FROM movies");
+    db.all("SELECT * FROM movies", [], (err,rows));
     res.send('something') // res.json(result.row)
 
   } catch (error){
@@ -29,6 +29,8 @@ server.get('/movies', (req, res) => {
 server.put('/movies/:id', (req, res) => {
     try {
       const {id, title, year, category } = req.body;
+      eller
+      const result = db.run("SELECT ????") // Osäker
       res.send(`Uppdatera film ${id}`)
 
   } catch (error){
@@ -55,8 +57,7 @@ server.post('/movies', (req, res) => {
 
 server.delete('/movies/:id', (req, res) => {
   try {
-    const id=req.params.id
-
+    const result = db.run("SELECRT ?????") // Osäker
     res.send(`Filmen med id ${id} har raderats`)
 
   } catch (error){
@@ -66,10 +67,10 @@ server.delete('/movies/:id', (req, res) => {
   }
 }); 
 
-//Sök
+//Sök via id
 server.get('/movies/:id', (req, res) => {
   try {
-    const result = db.all("SELECT * FROM movies");
+    const result = db.all("SELECT ?????"); // Osäker
     res.send('Söker efter film med id ${id}');
 
   } catch (error){
