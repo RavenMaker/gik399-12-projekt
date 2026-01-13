@@ -15,50 +15,67 @@ server.listen(PORT, () => {
 // Alla endpoints ska ha någon from av db.run(), db.all() eller db.get()
 server.get('/movies', (req, res) => {
   try {
-    db.all("SELECT * FROM movies", [], (err,rows));
-    res.send('something') // eller res.json(result.row)
-
+    db.all("SELECT * FROM movies", [], (err,rows) => {
+      if (err) {
+        console.error(err)
+        return res.status(500).json({message: 'Kunde inte hämta filmer'});
+      }
+    res.json(rows)
+  });
   } catch (error){
     console.error(error);
-    res.status(500).json({
-      message: 'Det gick inte att hämta'});
+    res.status(500).json({message: 'Serverfel'});
   }
 
 }); 
 
-server.put('/movies/:id', (req, res) => {
+server.put('/movies/:id', (req, res) => { 
     try {
       const {id, title, year, category } = req.body;
-      eller
-      const result = db.run("SELECT * FROM movies WHERE id = ${id}") // Osäker
-      res.send(`Uppdatera film ${id}`)
+
+      db.run(
+        "UPDATE movies SET title = ?, year = ?, category = ? WHERE id = ?",
+        [title, year, category, id],
+        (err) => {
+          if (err){
+            return res.status(500).json({message: 'Det gick inte att uppdatera filmen'});
+          }
+          res.json({message: `Film med id ${id} uppdaterades`,});
+        }
+    );
 
   } catch (error){
-    console.error(error);
-    res.status(500).json({
-      message: 'Det gick inte att uppdatera'});
+    res.status(500).json({message: 'Det gick inte att uppdatera'});
   }
-
 });
 
-server.post('/movies', (req, res) => {
+server.post('/movies', (req, res) => { 
   try {
-    console.log(req.body);
-    const {id, title, year, category } = req.body;
+    const {title, year, category } = req.body;
 
-    // res.send('something')
+    db.run(
+      "INSERT INTO movies (title, year, category) VALUES (?, ?, ?)",
+      [title, year, category],
+      (err) => {
+        if (err){
+          return res.status(500).json({message: 'Kunde inte skapa film'});
+        }
+        res.json({message: 'Film skapad'});
+      }
+    );
 
   } catch (error){
     console.error(error);
-    res.status(500).json({
-      message: 'Det gick inte att skapa ny film'});
+    res.status(500).json({message: 'Det gick inte att skapa ny film'});
   }
 });
 
 server.delete('/movies/:id', (req, res) => {
   try {
-    const result = db.run("SELECRT ?????") // Osäker
-    res.send(`Filmen med id ${id} har raderats`)
+    const id = req.params.id;
+
+    db.run("DELETE FROM movies WHERE id = ?", id);
+    res.json({message: 'Filmen med id ${id} har raderats'});
 
   } catch (error){
     console.error(error);
@@ -67,7 +84,7 @@ server.delete('/movies/:id', (req, res) => {
   }
 }); 
 
-//Sök via id
+//Sök via id, INTE obligatorisk...TA BORT!!!!!
 server.get('/movies/:id', (req, res) => {
   try {
     const result = db.all("SELECT ?????"); // Osäker
