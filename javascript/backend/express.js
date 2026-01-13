@@ -16,7 +16,7 @@ server.listen(PORT, () => {
 server.get('/movies', (req, res) => {
   try {
     db.all("SELECT * FROM movies", [], (err,rows));
-    res.send('something') // res.json(result.row)
+    res.send('something') // eller res.json(result.row)
 
   } catch (error){
     console.error(error);
@@ -30,7 +30,7 @@ server.put('/movies/:id', (req, res) => {
     try {
       const {id, title, year, category } = req.body;
       eller
-      const result = db.run("SELECT ????") // Osäker
+      const result = db.run("SELECT * FROM movies WHERE id = ${id}") // Osäker
       res.send(`Uppdatera film ${id}`)
 
   } catch (error){
