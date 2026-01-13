@@ -166,6 +166,31 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    //=== Frontend gör api anrop och tar emot svar ===
+     const respons = await fetch('/movies/1', { 
+        method:'PUT' });
+
+    const data = await respons.json();
+    document.getElementById('status').textContent = data.message;
+
+    // Samma div för alla meddelanden 
+    
+
+    function showStatusMessage(message, type) {
+        const status = document.getElementById('status');
+
+        status.textContent = message;
+        status.className 
+        status.className = isError ? 'p-3 rounded text-sm bg-red-200 text-red-800' : 'p-3 rounded text-sm bg-green-200 text-green-800';
+        status.classList.remove('hidden');
+        if (type === 'error') {
+            status.classList.add('bg-red-200', 'text-red-800');
+        }
+        else {
+            status.classList.add('bg-green-200', 'text-green-800');
+            
+   
+
     console.log("frontend JS laddad och redo");                         //Körs när sidan laddas för att bekräfta att JS filen är korrekt länkad - kan tas bort om man vill
 
     fetchMovies();
