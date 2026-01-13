@@ -19,5 +19,4 @@ INSERT INTO movies (id,title, year, category) VALUES (10,'Interstellar', 2014, '
 INSERT INTO movies (id,title, year, category) VALUES (11,'Gladiator', 2000, 'Historical Drama');
 INSERT INTO movies (id,title, year, category) VALUES (12,'Avatar', 2014, 'Sci-fi Action');
 INSERT INTO movies (id,title, year, category) VALUES (13,'Happy Gilmore ', 1996, 'Comedy');
-
-
+INSERT INTO movies (id,title, year, category) VALUES (14,'Sagan om att klara av kursen', 2026, 'GIK399-Grupp 12');
