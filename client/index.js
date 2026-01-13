@@ -34,12 +34,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // === Funktion för knapptext ===
     function updateSubmitButtonText() {
         const button = form.querySelector("button[type='submit']");
-        if (form.dataset.editId) {
+        if (form.dataset.editId && button.textContent==="Lägg till  ny film") {                                      //Kollar om vi är i edit läge
             button.textContent = "Uppdatera film"; 
-            button.className="mt-4 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600";                      //Ändra knapptext vid edit läge
+            button.className="btn-update";                      //Ändra knapptext vid edit läge
         } else {
             button.textContent = "Lägg till  ny film";
-            button.className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600";                       //Standard knapptext
+            button.className="btn-add";                       //Standard knapptext
         }
     }
 
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
             //Ta bort knapp
             const deleteBtn= document.createElement("button");
             deleteBtn.textContent ="Ta bort";
-            deleteBtn.className="btn-primary bg-red-500";
+            deleteBtn.className="btn-remove";
 
             //Klick lyssnare för ta bort
             deleteBtn.addEventListener("click", () => {
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
             //Ändra knapp
             const editBtn = document.createElement("button");
             editBtn.textContent = "Ändra";
-            editBtn.className="btn-primary bg-yellow-500";
+            editBtn.className="btn-change";
 
             editBtn.addEventListener("click", () => {
                 //fyll formulär med filmens data
@@ -92,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 updateSubmitButtonText();                                   //Uppdatera knapptexten när vi går in i edit läge
 
                 console.log("redigerar film med id:", movie.id);
+                
             });
 
             //osynligt id för senare DELETE/UPDATE
@@ -128,7 +129,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const yearValue = document.querySelector("#year").value;         
         const categoryValue = document.querySelector("#category").value; 
 
-    
+        
+
         //Samlar formulärdata i ett objekt
         const movie = {
             title: titleValue,
@@ -153,10 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     form.reset();
                     fetchMovies();
                 });
-        }
-
-        // == Skapa ny film ==
-        else {
+        }else {
             fetch("/movies", { 
                 method: "POST", 
                 headers: {"Content-Type": "application/json"},
@@ -170,6 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 
             });
         }
+        updateSubmitButtonText(); 
     });
 
     console.log("frontend JS laddad och redo");                         //Körs när sidan laddas för att bekräfta att JS filen är korrekt länkad - kan tas bort om man vill
