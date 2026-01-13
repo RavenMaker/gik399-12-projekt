@@ -65,12 +65,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
             //Klick lyssnare för ta bort
             deleteBtn.addEventListener("click", () => {
-                console.log("Ta bort film med id:", movie.id);
-
-                //Tar bort raden visuellt på frontend
-                li.remove();
-
-                //Tar bort från backend via fetch DELETE (kommer senare)
+                fetch(`/movies/${movie.id}`, {
+                    method: "DELETE"
+                })
+                .then(res => res.json())
+                .then(() => {
+                    fetchMovies();
+                });
             });
 
             //Ändra knapp
@@ -105,9 +106,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    
+ //Fetch GET /movies (R i CRUD)
+    function fetchMovies(){
+        fetch("/movies")                                //Gör anrop till backend och hämtar alla filmer och loggar svaret i console
+            .then(res => res.json())                               
+            .then(data => renderMovieList(data))                                       //Ta datan jag fick och visa den på sidan)
+            .catch(error => console.error("Fel vid fetch", error));
+    } 
 
-// === Hantera formulär submit (CREATE + UPDATE) === 
+ // === Hantera formulär submit (CREATE + UPDATE) === 
     form.addEventListener("submit", (e) => {                             //När användaren klickar på submit i formuläret körs denna funktion
         e.preventDefault();                                              //förhindrar att sidan laddas om eftersom projektet kräver att detta stoppas
 
@@ -129,65 +136,40 @@ document.addEventListener("DOMContentLoaded", () => {
         if (form.dataset.editId) {
             const id = form.dataset.editId;
 
-            console.log("Ska uppdatera film med id", id);
-            console.log("Uppdaterad data:", movie);
+            fetch(`/movies/${id}`,{
+                method: "PUT",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(movie)
+            })
 
-            //Här kommer PUT /resurs/:id senare
-            // fetch(`/resurs/${id}`, { method: "PUT", body: JSON.stringify(movie) })
-
-            //Avsluta edit läge
-            delete form.dataset.editId;
+                .then(res => res.json())
+                .then(() => {
+                    delete form.dataset.editId;
+                    form.reset();
+                    fetchMovies();
+                });
         }
+
         // == Skapa ny film ==
         else {
-            console.log("Ny film:", movie);
+            fetch("/movies", { 
+                method: "POST", 
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(movie)
+            })
 
-            fetch("/resurs", { method: "POST", body: JSON.stringify(movie) })
-            .then(response => response.json())
-            .then(data => {
-                console.log("svar från backend:", data);
-                //Uppdatera listan med ny film
-
-        })
-            .catch(error => {
-                console.error("Fel vid fetch", error);
+            .then(res => res.json())
+            .then(() => {
+                form.reset();
+                fetchMovies();
             });
-
-
-            // fetch("/resurs", { method: "POST", body: JSON.stringify(movie) })
         }
-
-        //Rensar formuläret efter submit
-        form.reset();
     });
 
-    console.log("frontend JS laddad och redo");                          //Körs när sidan laddas för att bekräfta att JS filen är korrekt länkad - kan tas bort om man vill
+    console.log("frontend JS laddad och redo");                         //Körs när sidan laddas för att bekräfta att JS filen är korrekt länkad - kan tas bort om man vill
 
-     //Fetch GET /resurs (R i CRUD)
-     // OBS: FETCH ÄR TILLFÄLLIGT AVSTÄNGD – BACKEND EJ KLAR
-     /*
-     fetch("http://localhost:3000/resurs")                                //Gör anrop till backend och hämtar alla filmer och loggar svaret i console
-        .then(response => response.json())                               
-        .then(data => {
-            console.log("svar från backend:", data);
-            renderMovieList(data);                                       //Ta datan jag fick och visa den på sidan
-        })
-        .catch(error => {
-            console.error("Fel vid fetch", error);
-        });*/
-
-    //TESTDATA (OBS!!!TAS BORT när BACKEND ÄR KLAR och avmarker då FETCH som är avstängd ovanför)
-            //Simulerar svar från Get/resurs
-    const testMovies = [
-        { id: 1, title: "Alien", year: 1979, category: "Sci-Fi" },
-        { id: 2, title: "The Godfather", year: 1972, category: "Drama" },
-        { id: 3, title: "Mad Max", year: 2015, category: "Action" }
-        ];
-        //Tillfällig rendering för verifiering av frontend
-        renderMovieList(testMovies);
-
-    });
-
+    fetchMovies();
+});
 // ======================================================
 // FRONTEND – CHECKLISTA ENLIGT UPPGIFTSKRAV (GIK339)
 // ======================================================
@@ -199,7 +181,7 @@ document.addEventListener("DOMContentLoaded", () => {
 // [x] Ingen sidladdning vid formulärsubmit (preventDefault)
 // [x] DOM manipuleras dynamiskt (createElement, appendChild)
 // [x] fetch() används för kommunikation med backend
-// [ ] Alla förändringar ska uppdatera innehåll utan reload (pågående)  (Blir klar när CREATE/UPDATE uppdaterar listan)
+// [x] Alla förändringar ska uppdatera innehåll utan reload
 
 // ------------------------------------------------------
 // 2. VISA ALLA – READ (R i CRUD)
@@ -207,11 +189,11 @@ document.addEventListener("DOMContentLoaded", () => {
 // [x] Lista skapas via JavaScript (ul/li)
 // [x] Listan finns inte hårdkodad i HTML
 // [x] Funktion finns för att rendera lista (renderMovieList)
-// [ ] GET /resurs kopplas till renderMovieList(data)
-// [ ] Varje film ska renderas från backend-data
+// [x] GET /movies kopplas till renderMovieList(data)
+// [x] Varje film ska renderas från backend-data
 // [x] id ska lagras osynligt (t.ex. data-id på li)
-// [ ] Någon egenskap ska påverka design (CSS-klass)
-// [ ] Listan ska uppdateras efter CREATE / UPDATE / DELETE (pågående)
+// [x] Någon egenskap ska påverka design (CSS-klass)
+// [x] Listan ska uppdateras efter CREATE / UPDATE / DELETE
 // [ ] (Valfritt) Klick på film för detaljvy
 // [x] Knappar för ÄNDRA / TA BORT per film
 
@@ -220,15 +202,15 @@ document.addEventListener("DOMContentLoaded", () => {
 // ------------------------------------------------------
 // [X] Ändra-knapp per film
 // [X] Klick fyller formuläret med befintlig data
-// [ ] GET /resurs/:id vid behov
+// [ ] GET /movies/:id vid behov
 // [X] Filmens id sparas osynligt (t.ex. dataset eller localStorage)
-// [ ] Submit skickar PUT istället för POST
+// [x] Submit skickar PUT istället för POST
 
 // ------------------------------------------------------
 // 4. TA BORT RESURS – DELETE (D i CRUD)
 // ------------------------------------------------------
 // [x] Ta bort-knapp per film
-// [ ] DELETE /resurs/:id via fetch
+// [x] DELETE /movies/:id via fetch
 // [x] id hämtas från klickad film
 // [ ] Meddelande visas efter borttagning
 // [x] Listan uppdateras utan sidladdning
@@ -246,11 +228,11 @@ document.addEventListener("DOMContentLoaded", () => {
 // ------------------------------------------------------
 // [x] Submit-eventlyssnare finns
 // [x] Formulärdata samlas i objekt
-// [ ] POST /resurs via fetch (CREATE)
-// [ ] PUT /resurs/:id via fetch (UPDATE)
-// [ ] JSON.stringify(movie) används i body
+// [x] POST /movies via fetch (CREATE)
+// [x] PUT /movies/:id via fetch (UPDATE)
+// [x] JSON.stringify(movie) används i body
 // [ ] Meddelande visas efter svar
-// [ ] Listan uppdateras dynamiskt efter svar
+// [x] Listan uppdateras dynamiskt efter svar
 
 // ------------------------------------------------------
 // 7. MEDDELANDERUTA / FEEDBACK
