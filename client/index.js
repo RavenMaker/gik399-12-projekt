@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(res => res.json())
                 .then(() => {
                     fetchMovies();
+                    ResonsPopUp("Film borttagen!");
                 });
             });
 
@@ -154,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     delete form.dataset.editId;
                     form.reset();
                     fetchMovies();
+                    ResonsPopUp("Film uppdaterad!");
                 });
         }else {
             fetch("/movies", { 
@@ -166,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(() => {
                 form.reset();
                 fetchMovies();
-                
+                ResonsPopUp("Ny film tillagd!");
             });
         }
         updateSubmitButtonText(); 
@@ -175,76 +177,13 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("frontend JS laddad och redo");                         //Körs när sidan laddas för att bekräfta att JS filen är korrekt länkad - kan tas bort om man vill
 
     fetchMovies();
+
+    // === Funtion för status popup ===
+    function ResonsPopUp(txt) {
+        document.getElementById("respons-PopUp").innerHTML = "Status: "+txt;
+        setTimeout(() => {
+            document.getElementById("respons-PopUp").innerHTML = "Status:";
+        }, 5000);
+    }   
 });
-// ======================================================
-// FRONTEND – CHECKLISTA ENLIGT UPPGIFTSKRAV (GIK339)
-// ======================================================
-//  X = avklarade delar
-// ------------------------------------------------------
-// 1. GENERELLT
-// ------------------------------------------------------
-// [x] JavaScript körs efter DOMContentLoaded
-// [x] Ingen sidladdning vid formulärsubmit (preventDefault)
-// [x] DOM manipuleras dynamiskt (createElement, appendChild)
-// [x] fetch() används för kommunikation med backend
-// [x] Alla förändringar ska uppdatera innehåll utan reload
 
-// ------------------------------------------------------
-// 2. VISA ALLA – READ (R i CRUD)
-// ------------------------------------------------------
-// [x] Lista skapas via JavaScript (ul/li)
-// [x] Listan finns inte hårdkodad i HTML
-// [x] Funktion finns för att rendera lista (renderMovieList)
-// [x] GET /movies kopplas till renderMovieList(data)
-// [x] Varje film ska renderas från backend-data
-// [x] id ska lagras osynligt (t.ex. data-id på li)
-// [x] Någon egenskap ska påverka design (CSS-klass)
-// [x] Listan ska uppdateras efter CREATE / UPDATE / DELETE
-// [ ] (Valfritt) Klick på film för detaljvy
-// [x] Knappar för ÄNDRA / TA BORT per film
-
-// ------------------------------------------------------
-// 3. UPPDATERA RESURS – UPDATE (U i CRUD)
-// ------------------------------------------------------
-// [X] Ändra-knapp per film
-// [X] Klick fyller formuläret med befintlig data
-// [ ] GET /movies/:id vid behov
-// [X] Filmens id sparas osynligt (t.ex. dataset eller localStorage)
-// [x] Submit skickar PUT istället för POST
-
-// ------------------------------------------------------
-// 4. TA BORT RESURS – DELETE (D i CRUD)
-// ------------------------------------------------------
-// [x] Ta bort-knapp per film
-// [x] DELETE /movies/:id via fetch
-// [x] id hämtas från klickad film
-// [ ] Meddelande visas efter borttagning
-// [x] Listan uppdateras utan sidladdning
-
-// ------------------------------------------------------
-// 5. FORMULÄR
-// ------------------------------------------------------
-// [x] Formulär finns i HTML
-// [x] Alla fält utom id finns
-// [x] Rätt input-typer används (text, number)
-// [ ] (Valfritt) Validering av fält
-
-// ------------------------------------------------------
-// 6. SKICKA FORMULÄR – CREATE & UPDATE (C + U i CRUD)
-// ------------------------------------------------------
-// [x] Submit-eventlyssnare finns
-// [x] Formulärdata samlas i objekt
-// [x] POST /movies via fetch (CREATE)
-// [x] PUT /movies/:id via fetch (UPDATE)
-// [x] JSON.stringify(movie) används i body
-// [ ] Meddelande visas efter svar
-// [x] Listan uppdateras dynamiskt efter svar
-
-// ------------------------------------------------------
-// 7. MEDDELANDERUTA / FEEDBACK
-// ------------------------------------------------------
-// [ ] Meddelanderuta finns (t.ex. Bootstrap modal)
-// [ ] Visas vid CREATE
-// [ ] Visas vid UPDATE
-// [ ] Visas vid DELETE
-// [ ] Text kan komma från backend-response

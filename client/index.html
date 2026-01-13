@@ -14,20 +14,20 @@
     <!--nav-->
      <header id="main-header">
       <nav class="nav" id="main-nav">
-      <titel class="text-xl ms-x"> Filmbibliotek </titel>
+      <title class="text-xl ms-x"> Filmbibliotek </title>
       </nav>
     </header>
-
     <!--Body-->
         <div class="main-container" id="main-container">
             <section class="hero" id="hero-section">
                 <h1 class="hero-title">Välkomment till Filmpalatset</h1>
                 <p class="hero-lead">Din personliga database där du kan lägga till och redigera sparade filmer</p>
+                
             </section>
 
             <section class="main-section" id="main-section">
                 <h2 class="section-title">Lägg till eller uppdatera film</h2>
-
+                <p class="hero-lead" id="respons-PopUp">Status:</p>
                 <form class="movie-form" id="movieForm">
                   <div class="form-group">
                     <label class="form-label" for="title">Titel</label>
@@ -43,26 +43,7 @@
                   </div>
                   <div class="form-actions">
                     <button class="btn-primary" id="submitButton" type="submit">Lägg till film</button>
-                  </div>
-<!--
-                    <div class="flex flex-col gap-4">
-                      <div class="flex flex-col mb-2 gap-2">
-                        <label class="font-medium text-start" for="movie-title ">Movie Title:</label>
-                        <input class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" id="movie-title" name="movie-title" required>
-                      </div>   
-                      <div class="flex flex-col mb-2 gap-2">
-                        <label class="font-medium text-start" for="movie-title ">Movie Title:</label>
-                        <input class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" id="movie-title" name="movie-title" required>
-                      </div> 
-                      <div class="flex flex-col mb-2 gap-2">
-                        <label class="font-medium text-start" for="movie-title ">Movie Title:</label>
-                        <input class="border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" id="movie-title" name="movie-title" required>
-                      </div> 
-                    </div>
-                    </div>  
-                    <button class="self-center mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600" type="submit">Add Movie</button>
-                -->
-                    
+                  </div>               
                </form>
             </section>
 
@@ -84,11 +65,3 @@
   <script src="index.js"></script>
 </body>
 </html>
-
-<!--Gjort en basic fungerande HTML struktur med helheten av det vi ska ha tillgång till för resterande
-ännu ingen koppling till Tailwind eller klar koppling till JS fixad i detta-->
-
-<!--Detta är den minimala HTML-struktur som krävs för CRUD-projektet.
-JS fyller listan dynamiskt och styling kan läggas på efteråt-->
-
-<!--TEST-->
