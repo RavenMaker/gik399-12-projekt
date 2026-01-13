@@ -17,8 +17,11 @@ INSERT INTO movies (title, year, category, director) VALUES ('The Dark Knight', 
 INSERT INTO movies (title, year, category, director) VALUES ('Forrest Gump', 1994, 'Drama', 'Robert Zemeckis');
 INSERT INTO movies (title, year, category, director) VALUES ('Parasite', 2019, 'Thriller', 'Bong Joon-ho');
 INSERT INTO movies (title, year, category, director) VALUES ('Interstellar', 2014, 'Science Fiction', 'Christopher Nolan');
+INSERT INTO movies (title, year, category, director) VALUES ('Avatar', 2009, 'Sci-fi Action', 'James Cameron');
+INSERT INTO movies (title, year, category, director) VALUES ('Avatar: The way of water', 2022, 'Sci-fi Action', 'James cameron');
+INSERT INTO movies (title, year, category, director) VALUES ('Avatar: Fire and Ash', 2025, 'Sci-fi Action', 'James cameron');
 INSERT INTO movies (title, year, category, director) VALUES ('Gladiator', 2000, 'Historical Drama', 'Ridley Scott');
-insert into movies (title, year, category director ) VALUES ("sagaon om att klara kursen", 2026, "GIK399", "grupp 12");
+insert into movies (title, year, category director ) VALUES ("Sagan om att klara kursen", 2026, "GIK399", "grupp 12");
 
 -- Hämtar alla filmer--
 Select * from movies;
