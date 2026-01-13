@@ -18,6 +18,6 @@ INSERT INTO movies (id,title, year, category) VALUES (9,'Parasite', 2019, 'Thril
 INSERT INTO movies (id,title, year, category) VALUES (10,'Interstellar', 2014, 'Science Fiction');
 INSERT INTO movies (id,title, year, category) VALUES (11,'Gladiator', 2000, 'Historical Drama');
 INSERT INTO movies (id,title, year, category) VALUES (12,'Avatar', 2014, 'Sci-fi Action');
-INSERT INTO movies (id,title, year, category) VALUES (11,'Happy Gilmore ', 1996, 'Comedy');
+INSERT INTO movies (id,title, year, category) VALUES (13,'Happy Gilmore ', 1996, 'Comedy');
 
 
