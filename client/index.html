@@ -18,50 +18,19 @@
     <!--nav-->
      <header id="main-header">
       <nav class="nav" id="main-nav">
-        <ul class="nav-list">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+      <titel class="text-xl ms-x"> MoviePlace </titel>
       </nav>
     </header>
-<!--
-    <section>
-      <h2>Lägg till film</h2>
 
-      <form id="movieForm">
-        <label for="title">Titel:</label>
-        <input
-          type="text"
-          id="title"
-          required
-          >
-        <label for="year">År:</label>
-        <input
-          type="number"
-          id="year"
-          >
-        <label for="category">Kategori:</label>
-        <input
-          type="text"
-          id="category"
-          >
-        <input
-          type="submit"
-          value="Lägg till"
-          >
-        </form>
-    </section>
--->
     <!--Body-->
         <div class="main-container" id="main-container">
             <section class="hero" id="hero-section">
-                <h1 class="hero-title">Welcome to Movie Vault</h1>
-                <p class="hero-lead">Your personal movie database to store and manage your favorite films.</p>
+                <h1 class="hero-title">Välkomment till Filmpalatset</h1>
+                <p class="hero-lead">Din personliga database där du kan lägga till och redigera sparade filmer</p>
             </section>
 
             <section class="main-section" id="main-section">
-                <h2 class="section-title">Add/Update Resource</h2>
+                <h2 class="section-title">Lägg till eller uppdatera film</h2>
 
                 <form class="movie-form" id="movieForm">
                   <div class="form-group">
@@ -69,11 +38,11 @@
                     <input class="form-input" type="text" id="title" name="Title" required>
                   </div>
                   <div class="form-group">
-                    <label class="form-label" for="year">Year</label>
+                    <label class="form-label" for="year">År</label>
                     <input class="form-input" type="text" id="year" name="Year" required>
                   </div>
                   <div class="form-group">
-                    <label class="form-label" for="category">Category</label>
+                    <label class="form-label" for="category">Kategori</label>
                     <input class="form-input" type="text" id="category" name="Category" required>
                   </div>
                   <div class="form-actions">
@@ -112,7 +81,7 @@
            </section>
 
     <footer id="footer">
-      <p>Kurs:GIK339 Grupp:12</p>
+      <p id="kurs">Kurs: GIK339 Grupp: 12</p>
     </footer>
   </main>
 

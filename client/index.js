@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
             //Ta bort knapp
             const deleteBtn= document.createElement("button");
             deleteBtn.textContent ="Ta bort";
-            deleteBtn.className="btn-primary";
+            deleteBtn.className="btn-primary bg-red-500";
 
             //Klick lyssnare för ta bort
             deleteBtn.addEventListener("click", () => {
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
             //Ändra knapp
             const editBtn = document.createElement("button");
             editBtn.textContent = "Ändra";
-            editBtn.className="btn-primary";
+            editBtn.className="btn-primary bg-yellow-500";
 
             editBtn.addEventListener("click", () => {
                 //fyll formulär med filmens data
