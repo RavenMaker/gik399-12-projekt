@@ -242,3 +242,6 @@ document.addEventListener("DOMContentLoaded", () => {
 // [ ] Visas vid UPDATE
 // [ ] Visas vid DELETE
 // [ ] Text kan komma från backend-response
+
+
+//Messages, create, update, delete 
