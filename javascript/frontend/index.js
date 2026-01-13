@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
             button.textContent = "Lägg till  ny film";
             button.className="mt-4 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600";                       //Standard knapptext
         }
-    }
+    }});
 
     updateSubmitButtonText();                                            //Anropa funktionen för att sätta initial knapptext
 
@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (type === 'error') {
             status.classList.add('bg-red-200', 'text-red-800');
         }
-        else {
+        else
             status.classList.add('bg-green-200', 'text-green-800');
             
    
@@ -194,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("frontend JS laddad och redo");                         //Körs när sidan laddas för att bekräfta att JS filen är korrekt länkad - kan tas bort om man vill
 
     fetchMovies();
-});
+};
 // ======================================================
 // FRONTEND – CHECKLISTA ENLIGT UPPGIFTSKRAV (GIK339)
 // ======================================================
@@ -269,4 +269,4 @@ document.addEventListener("DOMContentLoaded", () => {
 // [ ] Text kan komma från backend-response
 
 
-//Messages, create, update, delete 
+//Messages, create, update, delete
