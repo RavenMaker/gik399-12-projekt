@@ -12,19 +12,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-  <main>
-    <header>
-    
+    <main>
+    <header class="site-header">
     </header>
     <!--nav-->
      <header id="main-header">
-        <nav class="w-full bg-white shadow h-50%" id="main-nav">
-            <ul class="flex flex-row items-center justify-center text-1xl font-bold gap-3 max-w-7xl">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+      <nav class="nav" id="main-nav">
+        <ul class="nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </header>
 <!--
     <section>
@@ -55,34 +54,31 @@
     </section>
 -->
     <!--Body-->
-        <div class="w-auto border-gray-300" id="main-container">
-            <section id="hero-section">
-                <h1 class="text-5xl font-bold text-center ">Welcome to Movie Vault</h1>
-                <p class=" font-bold text-center">Your personal movie database to store and manage your favorite films.</p>
+        <div class="main-container" id="main-container">
+            <section class="hero" id="hero-section">
+                <h1 class="hero-title">Welcome to Movie Vault</h1>
+                <p class="hero-lead">Your personal movie database to store and manage your favorite films.</p>
             </section>
 
-            <section class="text-center" id="main-section">
-                <h2 class="text-2xl font-bold ">Add/Update Resource</h2>
-            
-                <form class="bg-white shadow rounded-xl p-6 flex flex-row gap-6 items-center mx-auto" id="movieForm">
-                <div class="flex gap-8 justify-center mx-center">
-                    <div class="flex flex-row gap-4 items-end mx-center">
+            <section class="main-section" id="main-section">
+                <h2 class="section-title">Add/Update Resource</h2>
 
-                      <div class="flex flex-row mb-2 gap-2 h-6 ">
-                        <label class="font-medium text-right h-6" for="movie-title ">Titel</label>
-                        <input class=" h-12 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" id="title" name="Title" required>
-                      </div>   
-                      <div class="flex flex-row mb-2 gap-2 h-6">
-                        <label class="font-medium text-start" for="movie-title ">Year </label>
-                        <input class="h-12 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" id="year" name="Year" required>
-                      </div> 
-                      <div class="flex flex-row mb-2 gap-2 h-6">
-                        <label class="font-medium text-start" for="movie-title ">Category</label>
-                        <input class="h-12 border border-gray-300 rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" id="category" name="Category" required>
-                      </div> 
-                      <button id="submitButton" type="submit">Lägg till film</button>
-                      
-                    </div>
+                <form class="movie-form" id="movieForm">
+                  <div class="form-group">
+                    <label class="form-label" for="title">Titel</label>
+                    <input class="form-input" type="text" id="title" name="Title" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="year">Year</label>
+                    <input class="form-input" type="text" id="year" name="Year" required>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="category">Category</label>
+                    <input class="form-input" type="text" id="category" name="Category" required>
+                  </div>
+                  <div class="form-actions">
+                    <button class="btn-primary" id="submitButton" type="submit">Lägg till film</button>
+                  </div>
 <!--
                     <div class="flex flex-col gap-4">
                       <div class="flex flex-col mb-2 gap-2">
@@ -105,13 +101,13 @@
                </form>
             </section>
 
-     <section class="bg-purple-100 p-8 space-between" id="movieList">
-            <h2 class="text-3xl font-bold text-center">Lista över resurser</h2>
-                <div id="list" class="bg-white grid gap-4">
-                    <div class="p-4 shadow rounden bg-grey flex justify-end">
-                        visa databaslistan här. 
-                    </div>
-                </div>
+     <section class="list-section" id="movieList">
+        <h2 class="section-heading">Lista över resurser</h2>
+          <div id="list" class="list-placeholder">
+            <div class="placeholder-text">
+              visa databaslistan här. 
+            </div>
+          </div>
               <button>Uppdatera</button>
            </section>
 

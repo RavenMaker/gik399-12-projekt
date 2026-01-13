@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //skapa lista via JS
     const ul = document.createElement("ul");                             //Skapar dynamisk lista
     ul.id = "movieListUl";
+    ul.className = "movie-list-ul";
     list.innerHTML = ""; 
     list.appendChild(ul); 
 
@@ -52,16 +53,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
         movies.forEach(movie => {                                        //loopar igenom varje film)
             const li = document.createElement("li");
-            li.className="bg-white shadow-md rounded-lg p-4 mb-4 flex items-center justify-between"; //lägg till lite styling med tailwind
+            li.className="movie-item";
 
             //texten för filmen
             const text = document.createElement("span");
             text.textContent = `${movie.title} (${movie.year}) - ${movie.category}`;
-            text.className = "font-medium text-lg text-gray-800 mx-4";
+            text.className = "movie-text";
             //Ta bort knapp
             const deleteBtn= document.createElement("button");
             deleteBtn.textContent ="Ta bort";
-            deleteBtn.className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600";
+            deleteBtn.className="btn-primary";
 
             //Klick lyssnare för ta bort
             deleteBtn.addEventListener("click", () => {
@@ -77,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
             //Ändra knapp
             const editBtn = document.createElement("button");
             editBtn.textContent = "Ändra";
-            editBtn.className="mt-4 bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600";
+            editBtn.className="btn-primary";
 
             editBtn.addEventListener("click", () => {
                 //fyll formulär med filmens data
@@ -97,9 +98,13 @@ document.addEventListener("DOMContentLoaded", () => {
             li.dataset.id =movie.id;    
                                             
             //bygger listan
+            const actions = document.createElement('div');
+            actions.className = 'movie-actions';
+            actions.appendChild(editBtn);
+            actions.appendChild(deleteBtn);
+
             li.appendChild(text);
-            li.appendChild(editBtn);
-            li.appendChild(deleteBtn);
+            li.appendChild(actions);
 
             //lägger till i listan
             ul.appendChild(li);
@@ -162,6 +167,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(() => {
                 form.reset();
                 fetchMovies();
+                
             });
         }
     });
