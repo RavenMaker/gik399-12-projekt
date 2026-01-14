@@ -53,7 +53,7 @@ input:focus, select:focus, textarea:focus, button:focus {
   
 }
 .main-section{padding:12px;
-background:#bdcefc40;
+background:#4173ff40;
 border-radius:8px;
 margin-bottom:20px;
 box-shadow:0 4px 12px rgba(20,20,50,0.05);
@@ -69,7 +69,7 @@ padding:1rem;
 /* Hero */
 .hero{display:flex;text-align:center;padding:20px;flex-direction: column;align-items: center;}
 .hero-title{font-size:28px;color:#111827;margin-bottom:8px;}
-.hero-lead{color:#6b7280;}
+.hero-lead{color:#000000;}
 
 /* Form */
 .movie-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:end;}
