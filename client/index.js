@@ -169,10 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // === Funtion för status popup ===
     function ResonsPopUp(txt) {
-        document.getElementById("respons-PopUp").innerHTML = "Status: "+txt;
-        setTimeout(() => {
-            document.getElementById("respons-PopUp").innerHTML = "Status:";
-        }, 5000);
+        alert(txt);
     }   
 });
 
